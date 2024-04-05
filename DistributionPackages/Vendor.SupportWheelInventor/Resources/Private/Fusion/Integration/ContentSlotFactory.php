@@ -160,10 +160,10 @@ final class ContentSlotFactory extends AbstractComponentPresentationObjectFactor
                     Collection::fromSlots(... array_filter([
                         $contentNode->getProperty('headline') || $inBackend
                             ? new Headline(
-                            HeadlineVariant::VARIANT_REGULAR,
-                            HeadlineType::TYPE_H2,
-                            Editable::fromNodeProperty($contentNode, 'headline')
-                        )
+                                HeadlineVariant::VARIANT_REGULAR,
+                                HeadlineType::TYPE_H2,
+                                Editable::fromNodeProperty($contentNode, 'headline')
+                            )
                             : null,
                         new CacheSegment(
                             new Grid(
@@ -384,8 +384,7 @@ final class ContentSlotFactory extends AbstractComponentPresentationObjectFactor
         Node $accordionNode,
         ContentContext $subgraph,
         bool $inBackend
-    ): SlotInterface
-    {
+    ): SlotInterface {
         return new ContentContainer(
             ContentContainerVariant::VARIANT_REGULAR,
             new Stack(
@@ -407,15 +406,13 @@ final class ContentSlotFactory extends AbstractComponentPresentationObjectFactor
                 ]))
             )
         );
-
     }
 
     public function forAccordionItemNode(
         Node $accordionItemNode,
         ContentContext $subgraph,
         bool $inBackend
-    ): SlotInterface
-    {
+    ): SlotInterface {
         return new AccordionItem(
             Editable::fromNodeProperty($accordionItemNode, 'headline'),
             new Stack(
@@ -446,8 +443,7 @@ final class ContentSlotFactory extends AbstractComponentPresentationObjectFactor
     public function forTileNavigationNode(
         Node $tileNavigationNode,
         bool $inBackend
-    ): SlotInterface
-    {
+    ): SlotInterface {
         return new ContentContainer(
             ContentContainerVariant::VARIANT_REGULAR,
             new Stack(
@@ -508,7 +504,6 @@ final class ContentSlotFactory extends AbstractComponentPresentationObjectFactor
                                             ),
                                             $inBackend
                                         ),
-
                                     ),
                                     $inBackend
                                 )

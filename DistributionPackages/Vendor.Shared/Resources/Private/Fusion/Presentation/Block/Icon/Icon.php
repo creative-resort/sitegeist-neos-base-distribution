@@ -27,7 +27,6 @@ final class Icon extends AbstractComponentPresentationObject
         IconSize $iconSize,
         IconColor $iconColor,
         IconCollection $iconCollection = IconCollection::COLLECTION_SHARED
-
     ): self {
         return new self(
             $iconName,

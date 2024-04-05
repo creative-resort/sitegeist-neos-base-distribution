@@ -125,9 +125,9 @@ final class ImageSourceFactory
         }
         return $thumbnail
             ? new UriImageSource(
-            $this->thumbnailService->getUriForThumbnail($thumbnail),
-            $title ?: $document->getTitle(),
-            $alt ?: $document->getCaption()
+                $this->thumbnailService->getUriForThumbnail($thumbnail),
+                $title ?: $document->getTitle(),
+                $alt ?: $document->getCaption()
             )
             : null;
     }
@@ -138,11 +138,9 @@ final class ImageSourceFactory
         string $propertyName = 'image',
         ?string $text = null
     ): DummyImageSource {
-        switch (
-            $nodeType->getConfiguration(
-                'properties.' . $propertyName . '.ui.inspector.editorOptions.crop.aspectRatio.locked'
-            )
-        ) {
+        switch ($nodeType->getConfiguration(
+            'properties.' . $propertyName . '.ui.inspector.editorOptions.crop.aspectRatio.locked'
+        )) {
             case ['width' => 1, 'height' => 1]:
                 $width = 1080;
                 $height = 1080;

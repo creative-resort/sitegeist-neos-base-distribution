@@ -130,7 +130,11 @@ final class DownloadCardFactory extends AbstractComponentPresentationObjectFacto
             case 'ppt':
             case 'pptx':
             default:
-                return Icon::specifiedWith(IconName::NAME_ARROW_RIGHT, IconSize::SIZE_REGULAR, IconColor::COLOR_DEFAULT);
+                return Icon::specifiedWith(
+                    IconName::NAME_ARROW_RIGHT,
+                    IconSize::SIZE_REGULAR,
+                    IconColor::COLOR_DEFAULT
+                );
         }
     }
 }
