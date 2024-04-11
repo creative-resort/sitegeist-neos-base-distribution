@@ -1,0 +1,47 @@
+prototype(Vendor.Shared:Block.VimeoVideo) < prototype(PackageFactory.AtomicFusion.PresentationObjects:PresentationObjectComponent) {
+    @presentationObjectInterface = 'Vendor\\Shared\\Presentation\\Block\\VimeoVideo\\VimeoVideo'
+
+    @styleguide {
+        title = 'VimeoVideo'
+        @caseFactory = 'Vendor\\Shared\\Presentation\\Block\\VimeoVideo\\VimeoVideoFactory'
+    }
+
+    renderer = afx`
+        <div class={[
+            "[Block.Video.VimeoVideo (" + presentationObject.aspectRatio.value + ")]",
+            "relative w-full mx-auto mt-xs"
+        ]}>
+            <div class={[
+                "relative w-full",
+                presentationObject.aspectRatio.equals('ratio_4_3') && "aspect-4/3",
+                presentationObject.aspectRatio.equals('ratio_16_9') && "aspect-video",
+                presentationObject.aspectRatio.equals('ratio_16_10') && "aspect-16/10",
+                !presentationObject.poster && "border border-brand"
+            ]}>
+                <iframe data-select="iframe"
+                        data-src={presentationObject.iframeSrc}
+                        class="absolute inset-0 border-none z-10 w-full h-full"
+                        allow="autoplay; fullscreen"
+                        allowfullscreen
+                        @if.i={!props.presentationObject.inBackend}
+                ></iframe>
+                <div
+                        @if.1={presentationObject.poster}
+                        class="absolute inset-0 z-20"
+                >
+                    <Vendor.Shared:Block.Figure presentationObject={presentationObject.poster}/>
+                    <div class="absolute inset-0 w-full h-full bg-video"></div>
+                </div>
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[10vw] h-[10vw] min-h-touch min-w-touch max-h-[100px] max-w-[100px] bg-brand/50 text-light rounded-full z-30 cursor-pointer">
+                    <Vendor.Shared:Block.Icon presentationObject={presentationObject.playIcon}/>
+                </div>
+                <div
+                    class="absolute bottom-0 left-0 pl-space48 pb-space48 z-30 space-y-space10 max-w-[50%]"
+                >
+                    <Vendor.Shared:Block.Headline presentationObject={presentationObject.headline} @if.1={presentationObject.headline}/>
+                    <Vendor.Shared:Block.Text presentationObject={presentationObject.text} @if.1={presentationObject.text}/>
+                </div>
+            </div>
+        </div>
+    `
+}

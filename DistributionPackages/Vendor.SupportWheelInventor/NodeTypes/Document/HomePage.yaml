@@ -17,12 +17,13 @@
       constraints:
         nodeTypes:
           '*': false
+          'Vendor.SupportWheelInventor:Content.Accordion': true
+          'Vendor.SupportWheelInventor:Content.AnchorNavigation': true
           'Vendor.SupportWheelInventor:Content.Downloads': true
           'Vendor.SupportWheelInventor:Content.DownloadList': true
           'Vendor.SupportWheelInventor:Content.Image': true
           'Vendor.SupportWheelInventor:Content.ImageWithText': true
           'Vendor.SupportWheelInventor:Content.Quotation': true
           'Vendor.SupportWheelInventor:Content.Text': true
-          'Vendor.SupportWheelInventor:Content.Accordion': true
           'Vendor.SupportWheelInventor:Content.TileNavigation': true
-          'Vendor.SupportWheelInventor:Content.AnchorNavigation': true
+          'Vendor.SupportWheelInventor:Content.Video': true

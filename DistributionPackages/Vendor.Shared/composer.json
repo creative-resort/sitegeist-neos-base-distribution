@@ -1,7 +1,6 @@
 {
     "name": "vendor/shared",
     "type": "neos-vendor",
-    "version": "1.0.0",
     "require": {
         "neos/neos": "8.3.6",
         "neos/neos-ui": "8.3.6",
@@ -20,10 +19,11 @@
         "sitegeist/kaleidoscope": "^6.5",
         "sitegeist/csvpo": "^1.5",
         "sitegeist/stampede": "^1.5",
-        "sitegeist/archaeopteryx": "^1.3",
+        "sitegeist/archaeopteryx": "dev-feature/inspectorLinkProperty",
         "sitegeist/iconoclasm": "^2.0",
         "packagefactory/atomicfusion-proptypes": "^2.0",
         "packagefactory/atomicfusion-classnames": "^1.0",
+        "sitegeist/inspectorgadget": "^2.0",
         "sitegeist/noderobis": "~1.1",
         "sitegeist/pyranodis": "~1.0"
     },

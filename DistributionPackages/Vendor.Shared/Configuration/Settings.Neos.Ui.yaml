@@ -1,0 +1,7 @@
+Neos:
+  Neos:
+    Ui:
+      resources:
+        javascript:
+          '@vendor/shared-editors':
+            resource: 'resource://Vendor.Shared/Public/Neos.Ui/Plugin.js'

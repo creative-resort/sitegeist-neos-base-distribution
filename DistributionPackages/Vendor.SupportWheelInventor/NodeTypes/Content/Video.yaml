@@ -1,0 +1,78 @@
+'Vendor.SupportWheelInventor:Content.Video':
+  label: "${q(node).property('headline') || node.nodeType.label}"
+  superTypes:
+    'Vendor.SupportWheelInventor:Content': true
+    'Vendor.Shared:Mixin.Headline': true
+    'Vendor.Shared:Mixin.Text': true
+    'Vendor.Shared:Mixin.Image': true # the preview image
+  ui:
+    icon: youtube
+    label: 'Video'
+    inspector:
+      groups:
+        image:
+          label: 'Vorschaubild'
+        video:
+          label: 'Video'
+          icon: youtube
+        platformVideo:
+          label: 'Video von Plattform'
+          icon: youtube
+        videoAsset:
+          label: 'Video aus Medien'
+          icon: youtube
+  properties:
+    image:
+      ui:
+        label: 'Vorschaubild'
+    platformVideoId:
+      type: 'Vendor\Shared\Domain\PlatformVideoId'
+      ui:
+        label: 'Video von Plattform'
+        inspector:
+          group: platformVideo
+        reloadIfChanged: true
+    videoAsset:
+      type: 'Neos\Media\Domain\Model\Asset'
+      ui:
+        label: 'Video aus Medien'
+        reloadIfChanged: true
+        inspector:
+          group: videoAsset
+          editorOptions:
+            constraints:
+              mediaTypes: ['video/*']
+            accept:
+              video/*
+    video__isLoop:
+      type: boolean
+      defaultValue: false
+      ui:
+        label: 'Dauerschleife'
+        reloadIfChanged: true
+        inspector:
+          group: videoAsset
+    video__hasControls:
+      type: boolean
+      defaultValue: true
+      ui:
+        label: 'Steuerelemente anzeigen'
+        reloadIfChanged: true
+        inspector:
+          group: videoAsset
+    video__isAutoplay:
+      type: boolean
+      defaultValue: false
+      ui:
+        label: 'Autoplay'
+        reloadIfChanged: false
+        inspector:
+          group: 'video'
+    video__isMuted:
+      type: boolean
+      defaultValue: false
+      ui:
+        label: 'Stummschaltung'
+        reloadIfChanged: false
+        inspector:
+          group: videoAsset

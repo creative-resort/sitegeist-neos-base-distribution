@@ -1,0 +1,62 @@
+prototype(Vendor.Shared:Block.YouTubeVideo) < prototype(PackageFactory.AtomicFusion.PresentationObjects:PresentationObjectComponent) {
+    @presentationObjectInterface = 'Vendor\\Shared\\Presentation\\Block\\YouTubeVideo\\YouTubeVideo'
+
+    @styleguide {
+        title = 'YouTubeVideo'
+        @caseFactory = 'Vendor\\Shared\\Presentation\\Block\\YouTubeVideo\\YouTubeVideoFactory'
+    }
+
+    renderer = afx`
+        <div class={[
+            "[Block.Video.YouTubeVideo (" + presentationObject.aspectRatio.value + ")]",
+            "relative w-full mx-auto mt-xs"
+        ]}>
+            <div class={[
+                "relative w-full",
+                presentationObject.aspectRatio.equals('ratio_4_3') && "aspect-4/3",
+                presentationObject.aspectRatio.equals('ratio_16_9') && "aspect-video",
+                presentationObject.aspectRatio.equals('ratio_16_10') && "aspect-16/10",
+                !presentationObject.poster && "border border-brand"
+            ]}>
+                <iframe data-select="iframe"
+                        data-src={presentationObject.iframeSrc}
+                        class="absolute inset-0 border-none z-10 w-full h-full"
+                        allow="autoplay; fullscreen"
+                        allowfullscreen
+                        @if.i={!props.presentationObject.inBackend}
+                ></iframe>
+                <div
+                        @if.1={presentationObject.poster}
+                        class="absolute inset-0 z-20"
+                >
+                    <Vendor.Shared:Block.Figure presentationObject={presentationObject.poster}/>
+                    <div class="absolute inset-0 w-full h-full bg-video"></div>
+                </div>
+                <div
+                    @if.1={!presentationObject.poster}
+                    class="absolute inset-0 z-20"
+                >
+                    <img
+                        alt="Vorschaubild"
+                        title="Vorschaubild Video"
+                        class="w-full h-full"
+                        src={"https://img.youtube.com/vi/" + presentationObject.identifier + "/maxresdefault.jpg"}
+                    />
+                    <div class="absolute inset-0 w-full h-full bg-video"></div>
+                </div>
+                <div class="absolute grid place-items-center scale-[80%] sm:scale-[100%] inset-0 m-auto z-30 cursor-pointer">
+                    <Vendor.Shared:Block.Icon presentationObject={presentationObject.playIcon}/>
+                </div>
+
+            </div>
+            <div
+                class="mt-space24 md:absolute md:bottom-0 md:p-space24 md:w-1/2 z-30"
+                data-text="text"
+            >
+                <Vendor.Shared:Block.Headline presentationObject={presentationObject.headline} @if.1={presentationObject.headline}/>
+                <Vendor.Shared:Block.Text presentationObject={presentationObject.text} @if.1={presentationObject.text}/>
+            </div>
+        </div>
+
+    `
+}

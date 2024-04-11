@@ -85,6 +85,14 @@ final class ContentSlotFactory extends AbstractComponentPresentationObjectFactor
         bool $inBackend
     ): SlotInterface {
         return match ((string) $contentNode->getNodeTypeName()) {
+            'Vendor.SupportWheelInventor:Content.Accordion'
+                => $this->forAccordionNode($contentNode, $subgraph, $inBackend),
+            'Vendor.SupportWheelInventor:Content.AccordionItem'
+                => $this->forAccordionItemNode($contentNode, $subgraph, $inBackend),
+            'Vendor.SupportWheelInventor:Content.Anchor'
+                => $this->forAnchorNode($contentNode, $inBackend),
+            'Vendor.SupportWheelInventor:Content.AnchorNavigation'
+                => $this->forAnchorNavigationNode($contentNode),
             'Vendor.SupportWheelInventor:Content.Download'
                 => $this->forDownloadNode($contentNode, $inBackend),
             'Vendor.SupportWheelInventor:Content.DownloadList'
@@ -99,16 +107,10 @@ final class ContentSlotFactory extends AbstractComponentPresentationObjectFactor
                 => $this->forTextNode($contentNode, $subgraph, $inBackend),
             'Vendor.SupportWheelInventor:Content.Quotation'
                 => $this->forQuotationNode($contentNode, $subgraph, $inBackend),
-            'Vendor.SupportWheelInventor:Content.Accordion'
-                => $this->forAccordionNode($contentNode, $subgraph, $inBackend),
-            'Vendor.SupportWheelInventor:Content.AccordionItem'
-                => $this->forAccordionItemNode($contentNode, $subgraph, $inBackend),
             'Vendor.SupportWheelInventor:Content.TileNavigation'
                 => $this->forTileNavigationNode($contentNode, $inBackend),
-            'Vendor.SupportWheelInventor:Content.AnchorNavigation'
-                => $this->forAnchorNavigationNode($contentNode),
-            'Vendor.SupportWheelInventor:Content.Anchor'
-                => $this->forAnchorNode($contentNode, $inBackend),
+            'Vendor.SupportWheelInventor:Content.Video'
+                => $this->forVideoNode($contentNode, $inBackend),
             default => throw new \InvalidArgumentException(
                 'Don\'t know how to render nodes of type ' . $contentNode->getNodeTypeName(),
                 1664205952
@@ -548,6 +550,31 @@ final class ContentSlotFactory extends AbstractComponentPresentationObjectFactor
                     ButtonType::TYPE_REGULAR,
                     ButtonColor::COLOR_BRAND,
                     Editable::fromNodeProperty($AnchorNode, 'title'),
+                    null,
+                    $inBackend
+                ),
+                $inBackend
+            )
+        );
+    }
+
+    public function forVideoNode(Node $contentNode, bool $inBackend): SlotInterface
+    {
+        return new ContentContainer(
+            ContentContainerVariant::VARIANT_NONE,
+            new Link(
+                LinkVariant::VARIANT_REGULAR,
+                ArchaeopteryxLink::create(
+                    new Uri('#' . $contentNode->getProperty('targetIdentifier')),
+                    $contentNode->getProperty('anchorTitle') ?: '',
+                    LinkTarget::TARGET_SELF->value,
+                    ['noopener', 'nofollow'],
+                ),
+                new Button(
+                    ButtonVariant::VARIANT_PIPE,
+                    ButtonType::TYPE_REGULAR,
+                    ButtonColor::COLOR_BRAND,
+                    Editable::fromNodeProperty($contentNode, 'title'),
                     null,
                     $inBackend
                 ),

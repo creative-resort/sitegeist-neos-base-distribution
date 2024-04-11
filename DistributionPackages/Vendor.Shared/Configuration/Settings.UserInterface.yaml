@@ -6,6 +6,15 @@ Neos:
           loadingDepth: 1
         structureTree:
           loadingDepth: 1
+      inspector:
+        dataTypes:
+          Vendor\Shared\Domain\PlatformVideoId:
+            editor: Sitegeist.InspectorGadget/Inspector/Editor
+            editorOptions:
+              type: Vendor\Shared\Domain\PlatformVideoId
+              isNullable: true
+              labels:
+                create: 'Video von Plattform auswählen'
     nodeTypes:
       groups:
         structure: ~
