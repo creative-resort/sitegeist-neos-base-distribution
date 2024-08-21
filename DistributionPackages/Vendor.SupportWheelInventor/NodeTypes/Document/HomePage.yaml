@@ -3,7 +3,7 @@
     'Vendor.SupportWheelInventor:Document': true
   ui:
     icon: globe
-    label: i18n
+    label: 'Homepage'
 
   constraints:
     nodeTypes:

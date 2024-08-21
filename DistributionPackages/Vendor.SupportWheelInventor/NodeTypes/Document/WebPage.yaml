@@ -3,7 +3,7 @@
     'Vendor.SupportWheelInventor:Document': true
   ui:
     icon: file
-    label: i18n
+    label: 'Web Page'
 
   constraints:
     nodeTypes:
