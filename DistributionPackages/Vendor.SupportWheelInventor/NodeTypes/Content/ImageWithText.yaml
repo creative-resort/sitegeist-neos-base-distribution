@@ -19,6 +19,8 @@
           position: 10
 
   properties:
+    link:
+      validation: { }
     alignment:
       type: string
       defaultValue: 'Bild links'

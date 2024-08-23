@@ -23,3 +23,6 @@
         label: 'Accordion offen?'
         inspector:
           group: 'accordionOption'
+
+    link:
+      validation: { }

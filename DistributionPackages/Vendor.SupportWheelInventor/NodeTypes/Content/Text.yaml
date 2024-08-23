@@ -10,3 +10,7 @@
   ui:
     label: 'Text'
     icon: 'align-left'
+
+  properties:
+    link:
+      validation: {}
