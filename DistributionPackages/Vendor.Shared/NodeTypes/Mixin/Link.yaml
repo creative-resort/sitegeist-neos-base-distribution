@@ -8,14 +8,17 @@
           icon: 'link'
   properties:
     link:
-      type: string
+      type: Sitegeist\Archaeopteryx\Link
       ui:
-        label: 'Link Target'
+        label: 'Link-Ziel'
         reloadIfChanged: true
         inspector:
           group: 'link'
-          editor: 'Sitegeist.Archaeopteryx/Inspector/Editors/LinkEditor'
           editorOptions:
+            anchor: true
+            title: true
+            relNofollow: true
+            targetBlank: true
             linkTypes:
               'Sitegeist.Archaeopteryx:Node':
                 position: start 100
