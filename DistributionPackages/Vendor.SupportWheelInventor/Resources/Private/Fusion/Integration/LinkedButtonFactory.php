@@ -38,6 +38,7 @@ final class LinkedButtonFactory extends AbstractComponentPresentationObjectFacto
     public function tryForLinkMixin(Node $node, ContentContext $subgraph, bool $inBackend): ?SlotInterface
     {
         $link = $node->getProperty('link');
+        $linkLabel = $node->getProperty('link__label');
 
         if ($link instanceof ArchaeopteryxLink) {
             $link = $this->resolveLink($link, $subgraph);
@@ -45,7 +46,7 @@ final class LinkedButtonFactory extends AbstractComponentPresentationObjectFacto
                 ButtonVariant::VARIANT_SOLID,
                 ButtonType::TYPE_REGULAR,
                 ButtonColor::COLOR_BRAND,
-                Value::fromString($link?->title ?: ''),
+                Value::fromString($linkLabel ?: $link?->title ?: ''),
                 Icon::specifiedWith(
                     IconName::NAME_ARROW_RIGHT,
                     IconSize::SIZE_REGULAR,
