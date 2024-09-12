@@ -46,6 +46,7 @@ final class PageFactory extends AbstractComponentPresentationObjectFactory
     ): Page {
         return new Page(
             Collection::fromSlots(
+                Content::fromNode($this->getMainContentCollection($subgraph, $errorPage))
             )
         );
     }

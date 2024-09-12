@@ -5,7 +5,7 @@
         "vendor-dir": "Packages/Libraries",
         "bin-dir": "bin",
         "platform": {
-            "php": "8.2"
+            "php": "8.3"
         },
         "allow-plugins": {
             "neos/composer-plugin": true
@@ -76,7 +76,7 @@
         ],
 
         "lint:editorconfig": "ec",
-        "lint:phpcs": "phpcs --colors --standard=PSR2 ./DistributionPackages/*/Classes",
+        "lint:phpcs": "phpcs --colors --standard=PSR12 ./DistributionPackages/*/Classes ./DistributionPackages/*/Resources/Private/Fusion",
         "lint:phpstan": "phpstan analyse",
         "lint": [
             "@lint:phpcs",
