@@ -1,16 +1,12 @@
 <?php
 
-/*
- * This file is part of the Vendor.SupportWheelInventor package.
- */
-
 declare(strict_types=1);
 
 namespace Vendor\SupportWheelInventor\Integration;
 
-use Neos\ContentRepository\Domain\NodeAggregate\NodeName;
-use Neos\ContentRepository\Domain\Model\Node;
-use Neos\Neos\Domain\Service\ContentContext;
+use Neos\ContentRepository\Core\Projection\ContentGraph\ContentSubgraphInterface;
+use Neos\ContentRepository\Core\Projection\ContentGraph\Node;
+use Neos\ContentRepository\Core\SharedModel\Node\NodeName;
 use PackageFactory\AtomicFusion\PresentationObjects\Fusion\AbstractComponentPresentationObjectFactory;
 use PackageFactory\AtomicFusion\PresentationObjects\Presentation\Slot\Collection;
 use PackageFactory\AtomicFusion\PresentationObjects\Presentation\Slot\Content;
@@ -20,24 +16,24 @@ final class PageFactory extends AbstractComponentPresentationObjectFactory
 {
     public function forHomePage(
         Node $homePage,
-        ContentContext $subgraph,
+        ContentSubgraphInterface $subgraph,
         bool $inBackend
     ): Page {
         return new Page(
             Collection::fromSlots(
-                Content::fromNode($homePage->findNamedChildNode(NodeName::fromString('main')))
+                Content::fromNode($this->getMainContentCollection($subgraph, $homePage))
             )
         );
     }
 
     public function forWebPage(
         Node $homePage,
-        ContentContext $subgraph,
+        ContentSubgraphInterface $subgraph,
         bool $inBackend
     ): Page {
         return new Page(
             Collection::fromSlots(
-                Content::fromNode($homePage->findNamedChildNode(NodeName::fromString('main')))
+                Content::fromNode($this->getMainContentCollection($subgraph, $homePage))
             )
         );
     }
@@ -45,12 +41,23 @@ final class PageFactory extends AbstractComponentPresentationObjectFactory
     public function for404Page(
         Node $errorPage,
         Node $site,
-        ContentContext $subgraph,
+        ContentSubgraphInterface $subgraph,
         bool $inBackend
     ): Page {
         return new Page(
             Collection::fromSlots(
             )
         );
+    }
+
+    private function getMainContentCollection(ContentSubgraphInterface $subgraph, Node $documentNode): Node
+    {
+        $mainContentCollection = $subgraph->findNodeByPath(
+            NodeName::fromString('main'),
+            $documentNode->aggregateId,
+        );
+        assert($mainContentCollection instanceof Node);
+
+        return $mainContentCollection;
     }
 }

@@ -2,25 +2,30 @@
     "name": "vendor/shared",
     "type": "neos-vendor",
     "require": {
-        "neos/neos": "^9.0",
-        "neos/neos-ui": "^9.0",
+        "neos/neos": "9.0.0-beta13",
+        "neos/flow": "9.0.0-beta11",
+        "neos/neos-ui": "9.0.0-beta13",
+        "neos/contentgraph-doctrinedbaladapter": "9.0.0-beta13",
+        "neos/redirecthandler": "^6.0",
+        "neos/redirecthandler-databasestorage": "*",
+        "neos/redirecthandler-neosadapter": "^5.0",
+        "neos/redirecthandler-ui": "^3.0",
         "neos/seo": "^4.1",
-        "neos/redirecthandler-ui": "dev-neos9",
-        "neos/redirecthandler-neosadapter": "dev-90/feature-upgrade-to-neos-9",
-        "neos/redirecthandler-databasestorage": "dev-flow-9-compatibility",
 
         "packagefactory/atomicfusion-presentationobjects": "^5.0",
 
         "flowpack/nodetemplates": "dev-neos9",
 
-        "sitegeist/klarschiff": "^3.0",
+        "sitegeist/klarschiff": "dev-neos9",
         "sitegeist/monocle": "^7.6",
-        "sitegeist/monocle-presentationobjects": "*",
-        "sitegeist/kaleidoscope": "^6.5",
-        "sitegeist/csvpo": "^1.5",
-        "sitegeist/stampede": "^1.5",
-        "sitegeist/archaeopteryx": "^1.0",
-        "sitegeist/iconoclasm": "^2.0"
+        "sitegeist/monocle-presentationobjects": "^2.0",
+        "sitegeist/kaleidoscope": "dev-neos9",
+        "sitegeist/csvpo": "^2.0",
+        "sitegeist/stampede": "dev-neos9",
+        "sitegeist/iconoclasm": "dev-neos9",
+        "sitegeist/inspectorgadget": "^3.0",
+        "sitegeist/chitchat": "dev-neos9",
+        "sitegeist/taxonomy": "dev-neos9-beta11"
     },
     "autoload": {
         "psr-4": {

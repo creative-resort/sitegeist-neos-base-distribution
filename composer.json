@@ -17,11 +17,11 @@
         "neos/neos": "^9.0",
         "neos/neos-ui": "^9.0",
         "neos/seo": "^4.1",
-        "neos/redirecthandler-ui": "dev-neos9",
-        "neos/redirecthandler-neosadapter": "dev-90/feature-upgrade-to-neos-9",
-        "neos/redirecthandler-databasestorage": "dev-flow-9-compatibility",
+        "neos/redirecthandler": "^6.0",
+        "neos/redirecthandler-databasestorage": "*",
+        "neos/redirecthandler-neosadapter": "^5.0",
+        "neos/redirecthandler-ui": "^3.0",
 
-        "packagefactory/atomicfusion-proptypes": "^2.0",
         "packagefactory/atomicfusion-classnames": "dev-neos9",
 
         "flowpack/nodetemplates": "dev-neos9",
@@ -51,9 +51,7 @@
         "deployer/deployer": "^7.0",
         "editorconfig-checker/editorconfig-checker": "^10.0",
         "sitegeist/magicwand": "dev-neos9",
-        "sitegeist/chantalle": "dev-neos9",
-        "sitegeist/noderobis": "dev-neos9",
-        "sitegeist/pyranodis": "dev-neos9"
+        "sitegeist/chantalle": "dev-neos9"
     },
     "suggest": {
         "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"

@@ -1,9 +1,5 @@
 <?php
 
-/*
- * This file is part of the Vendor.SupportWheelInventor package.
- */
-
 declare(strict_types=1);
 
 namespace Vendor\SupportWheelInventor\Integration;

@@ -8,8 +8,8 @@ declare(strict_types=1);
 
 namespace Vendor\SupportWheelInventor\Integration;
 
-use Neos\ContentRepository\Domain\Model\Node;
-use Neos\Neos\Domain\Service\ContentContext;
+use Neos\ContentRepository\Core\Projection\ContentGraph\ContentSubgraphInterface;
+use Neos\ContentRepository\Core\Projection\ContentGraph\Node;
 use PackageFactory\AtomicFusion\PresentationObjects\Fusion\AbstractComponentPresentationObjectFactory;
 use PackageFactory\AtomicFusion\PresentationObjects\Presentation\Slot\SlotInterface;
 
@@ -19,13 +19,13 @@ final class ContentSlotFactory extends AbstractComponentPresentationObjectFactor
         Node $contentNode,
         Node $documentNode,
         Node $site,
-        ContentContext $subgraph,
+        ContentSubgraphInterface $subgraph,
         bool $inBackend
     ): SlotInterface {
-        return match ((string) $contentNode->getNodeTypeName()) {
+        return match ($contentNode->nodeTypeName->value) {
             default => throw new \InvalidArgumentException(
-                'Don\'t know how to render nodes of type ' . $contentNode->getNodeTypeName(),
-                1664205952
+                'Don\'t know how to render nodes of type ' . $contentNode->nodeTypeName->value,
+                1726130732
             )
         };
     }
