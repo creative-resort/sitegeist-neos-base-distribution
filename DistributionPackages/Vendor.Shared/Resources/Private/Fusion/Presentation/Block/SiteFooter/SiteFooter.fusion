@@ -8,7 +8,113 @@ prototype(Vendor.Shared:Block.SiteFooter) < prototype(PackageFactory.AtomicFusio
     renderer = afx`
         <div class="bg-brand-grey w-full">
             <div class="w-full max-w-content-full mx-auto p-5">
-                [Site Footer]
+                <div class="grid grid-cols-1 lg:grid-cols-4 gap-[20px] justify-items-center	">
+                    <div class="text-center lg:text-left">
+                        <div
+                            class="mb-[20px] text-center lg:text-left font-bold"
+                            @if={presentationObject.primaryMenuTitle}
+                        >
+                            {presentationObject.primaryMenuTitle}
+                        </div>
+
+                        <ul class="pl-0">
+                            <Neos.Fusion:Loop items={presentationObject.primaryNavigationItems}>
+                                <li class="list-none leading-[48px]">
+                                    <Vendor.Shared:Block.Link presentationObject={item}/>
+                                </li>
+                            </Neos.Fusion:Loop>
+                        </ul>
+                    </div>
+
+                    <div class="text-center lg:text-left font-bold">
+                        <div
+                            class="mb-[20px] text-center lg:text-left"
+                            @if={presentationObject.secondaryMenuTitle}
+                        >
+                            {presentationObject.secondaryMenuTitle}
+                        </div>
+
+                        <ul class="pl-0">
+                        <Neos.Fusion:Loop items={presentationObject.secondaryNavigationItems}>
+                            <li class="list-none leading-[48px]">
+                                <Vendor.Shared:Block.Link presentationObject={item}/>
+                            </li>
+                        </Neos.Fusion:Loop>
+                        </ul>
+                    </div>
+
+                    <div class="text-center lg:text-left font-bold">
+                        <div
+                            class="mb-[20px] text-center lg:text-left"
+                            @if={presentationObject.thirdMenuTitle}
+                        >
+                            {presentationObject.thirdMenuTitle}
+                        </div>
+
+                        <ul class="pl-0">
+                            <Neos.Fusion:Loop items={presentationObject.thirdNavigationItems}>
+                                <li class="list-none leading-[48px]">
+                                    <Vendor.Shared:Block.Link presentationObject={item}/>
+                                </li>
+                            </Neos.Fusion:Loop>
+                        </ul>
+                    </div>
+
+                    <div class="text-center lg:text-left">
+                        <div
+                            class="mb-[20px] text-center lg:text-left font-bold"
+                        >
+                            Folgen Sie uns!
+                        </div>
+
+                        <ul class="pl-0">
+                            <li class="list-none leading-[48px]">
+                                <a
+                                    @if={presentationObject.facebookUri}
+                                    href={presentationObject.facebookUri}
+                                >
+                                    Facebook
+                                </a>
+                            </li>
+
+                            <li class="list-none leading-[48px]">
+                                <a
+                                    @if={presentationObject.instagramUri}
+                                    href={presentationObject.instagramUri}
+                                >
+                                    Instagram
+                                </a>
+                            </li>
+
+                            <li class="list-none leading-[48px]">
+                                <a
+                                    @if={presentationObject.xingUri}
+                                    href={presentationObject.xingUri}
+                                >
+                                    Xing
+                                </a>
+                            </li>
+
+                            <li class="list-none leading-[48px]">
+                                <a
+                                    @if={presentationObject.xUri}
+                                    href={presentationObject.xUri}
+                                >
+                                    X / Twitter
+                                </a>
+                            </li>
+
+                            <li class="list-none leading-[48px]">
+                                <a
+                                    @if={presentationObject.linkedinUri}
+                                    href={presentationObject.linkedinUri}
+                                >
+                                    LinkedIn
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     `
