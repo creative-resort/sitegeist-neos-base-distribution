@@ -32,3 +32,10 @@
                 position: start 60
       validation:
         Neos.Neos/Validation/NotEmptyValidator: { }
+    link__label:
+      type: string
+      ui:
+        label: 'Link-Label'
+        reloadIfChanged: true
+        inspector:
+          group: 'link'

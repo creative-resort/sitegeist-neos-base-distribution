@@ -6,9 +6,80 @@ prototype(Vendor.Shared:Block.SiteHeader) < prototype(PackageFactory.AtomicFusio
     }
 
     renderer = afx`
-        <div class="bg-brand-grey w-full ">
-            <div class="w-full max-w-content-full mx-auto p-5">
-                [Site Header]
+        <div class="[Block.SiteHeader] bg-brand-grey w-full relative">
+            <div class={[
+                    "flex justify-between w-full max-w-content-full mx-auto p-[20px] min-h-touch items-center"
+                ]}
+            >
+                <div>
+                    <Vendor.Shared:Block.Link presentationObject={presentationObject.homeLink}/>
+                </div>
+
+                <div class="flex items-center justify-end w-full h-full z-50">
+                    <ul
+                        class={[
+                            "text-lg space-x-[48px]",
+                            "hidden sm:flex items-center w-full h-full justify-end"
+                        ]}
+                    >
+                        <Neos.Fusion:Loop items={presentationObject.mainNavigationItems} itemName="mainNavigationItem">
+                            <li class="h-full"                                >
+                                <div class="flex flex-col items-center h-full group">
+                                    <a
+                                        href={mainNavigationItem.uri}
+                                        target="_self"
+                                        class="flex min-h-touch h-full items-center transition headerNavigationItem"
+                                    >
+                                        {mainNavigationItem.label}
+                                    </a>
+                                    <div
+                                        @if={mainNavigationItem.isActive}
+                                        class={["border-b-4 border-brand-default mt-[-4px] w-full"]}>
+                                    </div>
+                                    <div class={[
+                                            "absolute -bottom-[10px] left-0 hidden group-hover:block"
+                                        ]}
+                                    >
+                                        <div
+                                            @if={mainNavigationItem.subItems}
+                                            class={[
+                                                "bg-brand-grey p-space32 my-space16",
+                                                "flex gap-4"
+                                            ]}
+                                        >
+                                            <div class="flex flex-row w-screen">
+                                                <div class={[
+                                                            "max-w-content-full w-full mx-auto flex gap-x-[150px] justify-end",
+                                                            "gap-y-space16 px-space64"
+                                                        ]}>
+                                                    <span class="font-canaro-semiBold">{mainNavigationItem.label}</span>
+                                                    <Neos.Fusion:Loop items={mainNavigationItem.subItems}>
+                                                        <div class="flex flex-col flex-wrap space-y-space16">
+                                                            <Neos.Fusion:Loop
+                                                                items={item}
+                                                                itemName="subNavigationItem"
+                                                            >
+                                                                <a
+                                                                    class={[
+                                                                        subNavigationItem.isActive && "font-bold",
+                                                                        "hover:text-brand-blueLight w-full transition headerNavigationItem"
+                                                                    ]}
+                                                                    href={subNavigationItem.uri}
+                                                                >
+                                                                    {subNavigationItem.label}
+                                                                </a>
+                                                            </Neos.Fusion:Loop>
+                                                        </div>
+                                                    </Neos.Fusion:Loop>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </Neos.Fusion:Loop>
+                    </ul>
+                </div>
             </div>
         </div>
     `
