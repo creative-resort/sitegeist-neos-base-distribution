@@ -35,8 +35,6 @@
         "sitegeist/archaeopteryx": "dev-neos9",
         "sitegeist/iconoclasm": "dev-neos9",
 
-        "vendor/site": "*",
-        "vendor/wheelinventor": "*",
         "vendor/supportwheelinventor": "*"
     },
     "require-dev": {
